@@ -4,7 +4,7 @@ multiple_regression_write_up <- function(mod){
   # output model
   coeffs <- tidy(mod) %>% mutate_at(vars("estimate","std.error", "statistic"), funs(round(., 2)))
   fit <- glance(mod) # get rest of stats as a data frame
-  # print model fit p value
+  # print model fit
   fit_p_value <- ifelse(fit$p.value <= 0.001, " p < .001", paste("p = ",rd(fit$p.value, digits =3), sep = ""))
   print(paste("Fit: ","F", "(", fit$df %>% round(2), ", ", fit$df.residual %>% round(2),") = ", fit$statistic %>% round(2), ",",fit_p_value,sep= ""))
   # print adjusted r squared
