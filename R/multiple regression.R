@@ -1,4 +1,5 @@
 multiple_regression_write_up <- function(mod){
+  require(weights)
   require(broom)
   require(tidyverse)
   # output model
