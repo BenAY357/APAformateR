@@ -3,7 +3,7 @@ multiple_regression_write_up <- function(mod){
   require(broom)
   require(tidyverse)
   # output model
-  coeffs <- tidy(mod) %>% mutate_at(vars("estimate","std.error", "statistic"), funs(round(., 2)))
+  coeffs <- tidy(mod) %>% mutate_at(vars("estimate","std.error", "statistic"), list(~round(., 2)))
   fit <- glance(mod) # get rest of stats as a data frame
   # print model fit
   fit_p_value <- ifelse(fit$p.value <= 0.001, " p < .001", paste("p = ",rd(fit$p.value, digits =3), sep = ""))
